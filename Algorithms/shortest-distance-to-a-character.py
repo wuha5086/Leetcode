@@ -12,3 +12,15 @@ class Solution:
             results.append(minimum)     # adds minimum to results
         
         return results
+
+#Solution2
+def shortestToChar(self, S: str, C: str) -> List[int]:
+        
+            index = [i for i, x in enumerate(S) if x == C]
+            ans = []
+            for i in range(len(S)):
+                ans.append(min([abs(x-i) for x in index]))
+            return ans
+
+#1. get the whole index list
+#2. find out minimum distance
