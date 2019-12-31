@@ -14,7 +14,7 @@ class Solution:
         return results
 
 #Solution2
-dclass Solution:
+class Solution:
     def shortestToChar(self, S: str, C: str) -> List[int]:
         index = [i for i, x in enumerate(S) if x == C]
         ans = []
