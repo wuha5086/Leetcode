@@ -14,3 +14,16 @@ HAVING COUNT(id) NOT IN
           FROM friends
           GROUP BY activity) tmp2
 );
+
+
+/* Write your T-SQL query statement below */
+WITH cte AS
+(
+SELECT activity, COUNT(id) AS num
+FROM Friends
+GROUP BY activity
+)
+SELECT activity
+FROM cte
+WHERE num NOT IN (SELECT MAX(num) FROM cte)
+AND num NOT IN (SELECT MIN(num) FROM cte)
