@@ -26,6 +26,15 @@ SELECT seller_id
 FROM cte
 WHERE totalSales = (SELECT MAX(totalSales) FROM cte)
 
+/* Write your T-SQL query statement below */
+WITH CTE AS 
+(SELECT t.seller_id,  DENSE_RANK() OVER(ORDER BY SUM(t.price) DESC) AS rank FROM Sales t GROUP BY t.seller_id)
+SELECT s.seller_id 
+FROM Sales s join CTE c
+ON s.seller_id = c.seller_id
+WHERE c.rank = 1
+GROUP BY s.seller_id;
+
 
 
 
