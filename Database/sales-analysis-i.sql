@@ -35,7 +35,21 @@ ON s.seller_id = c.seller_id
 WHERE c.rank = 1
 GROUP BY s.seller_id;
 
-
+/* Write your T-SQL query statement below */
+with cte as(
+select
+seller_id,
+sum(price) as total
+from Sales
+group by seller_id
+)
+, cte1 as(
+select
+dense_rank() over (order by total desc) rank,
+seller_id
+from cte
+    )
+select seller_id from cte1 where rank = 1
 
 
     
