@@ -12,3 +12,5 @@ FROM
 GROUP BY s.student_id, j.subject_name
 ORDER BY s.student_id, j.subject_name;
 
+
+
